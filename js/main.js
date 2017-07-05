@@ -46,19 +46,19 @@ function initObject() {
     // geometry.vertices.push(p2);
     // geometry.colors.push(color1, color2);
 
-    var p1 = new THREE.Vector3(-500, 0, 0);
-    var p2 = new THREE.Vector3(500, 0, 0);
+    var p1 = new THREE.Vector3(-250, 0, 0);
+    var p2 = new THREE.Vector3(250, 0, 0);
     geometry.vertices.push(p1);
     geometry.vertices.push(p2);
 
     for ( var i = 0; i <= 20; i ++ ) {
 
         var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0x000000, opacity: 0.2 } ) );
-        line.position.z = ( i * 50 ) - 500;
+        line.position.z = ( i * 25 ) - 250;
         scene.add( line );
 
         var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0x000000, opacity: 0.2 } ) );
-        line.position.x = ( i * 50 ) - 500;
+        line.position.x = ( i * 25 ) - 250;
         line.rotation.y = 90 * Math.PI / 180;   //  旋转90度
         scene.add( line );
 
