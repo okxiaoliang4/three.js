@@ -36,18 +36,33 @@ function initLight() {
 
 function initObject() {
     var geometry = new THREE.Geometry(); // 创建一个几何类
-    var material = new THREE.LineBasicMaterial({vertexColors: true}); // 线的材质
-    var color1 = new THREE.Color(0x444444), color2 = new THREE.Color(0xFF0000);
+    // var material = new THREE.LineBasicMaterial({vertexColors: true}); // 线的材质
+    // var color1 = new THREE.Color(0x444444), color2 = new THREE.Color(0xFF0000);
+    //
+    // // 线的材质可以由2点的颜色决定
+    // var p1 = new THREE.Vector3(-100, 0, 100);
+    // var p2 = new THREE.Vector3(100, 0, -100);
+    // geometry.vertices.push(p1);
+    // geometry.vertices.push(p2);
+    // geometry.colors.push(color1, color2);
 
-    // 线的材质可以由2点的颜色决定
-    var p1 = new THREE.Vector3(-100, 0, 100);
-    var p2 = new THREE.Vector3(100, 0, -100);
+    var p1 = new THREE.Vector3(-500, 0, 0);
+    var p2 = new THREE.Vector3(500, 0, 0);
     geometry.vertices.push(p1);
     geometry.vertices.push(p2);
-    geometry.colors.push(color1, color2);
 
-    var line = new THREE.Line(geometry, material, THREE.LineSegments);
-    scene.add(line);
+    for ( var i = 0; i <= 20; i ++ ) {
+
+        var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0x000000, opacity: 0.2 } ) );
+        line.position.z = ( i * 50 ) - 500;
+        scene.add( line );
+
+        var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0x000000, opacity: 0.2 } ) );
+        line.position.x = ( i * 50 ) - 500;
+        line.rotation.y = 90 * Math.PI / 180;   //  旋转90度
+        scene.add( line );
+
+    }
 }
 
 function start() {
